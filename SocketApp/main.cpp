@@ -1,15 +1,14 @@
-﻿#include "include/socket/socket_manager.h"
-#include "include/window/window.h"
+﻿#include "include/socketApp.h"
 #include <iostream>
 
 int main()
 {
-    // initialize
-//#ifdef _WIN32
-//    WSADATA wsaData;
-//    WSAStartup(MAKEWORD(2, 2), &wsaData);
-//#endif
+    // Initialize WSA
+    InitializeWSAData();
 
-    Window SocketWindow("Socket App",50,50,600,600);
+    // Initialize window
+    Window SocketWindow("Socket App",50,50,640,600);
 
+    // Nothing will be run after this line
+    SocketWindow.HandleEvents();
 }
