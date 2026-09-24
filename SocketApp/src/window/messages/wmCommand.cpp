@@ -6,13 +6,25 @@ LRESULT WMCOMMAND(HWND hwnd, WPARAM wParam, LPARAM lParam) {
 		switch (LOWORD(wParam)) {
 
 		case MESSAGE_SEND: {
-			if (!connected) {
-				UpdatePropertyText(MESSAGE_FIELD, "Please connect first!");
+			if (connected) {
+				SendClientMessage(0);
+			}
+			else if (hosted) {
+				SendServerMessage(0);
 			}
 			else {
-				SendClientMessage();
+				UpdatePropertyText(MESSAGE_FIELD, "Please connect first!");
 			}
 			break;
+		}
+
+		case MESSAGE_FILE_SEND: {
+			if (connected)
+				SendClientMessage(1);
+
+			if (hosted)
+				SendServerMessage(1);
+				break;
 		}
 
 		case CONNECT_HOST_BUTTON: // if connect or host is clicked
@@ -56,7 +68,6 @@ LRESULT WMCOMMAND(HWND hwnd, WPARAM wParam, LPARAM lParam) {
 		case CLIENT_SERVER_SERVER: { // if server was selected
 			if (hosted || connected)
 				break;
-
 
 			EnableWindow(GetDlgItem(hwnd, CONNECT_HOST_IP_LABEL), FALSE); // disable ip label
 			SendDlgItemMessageA(hwnd, CONNECT_HOST_IP_FIELD, EM_SETREADONLY, TRUE, 0); // disable typing on ip field

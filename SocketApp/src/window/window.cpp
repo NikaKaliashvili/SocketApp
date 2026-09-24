@@ -17,7 +17,7 @@ Window::Window(std::string windowTitle, int x, int y, int w, int h) {
 	}
 
 	// create window
-	if (CreateWindowExA(0, "NIKA_MAIN", windowTitle.c_str(), WS_VISIBLE | WS_OVERLAPPEDWINDOW, x, y, w, h, 0, 0, 0, 0) == 0) {
+	if (CreateWindowExA(0, "NIKA_MAIN", windowTitle.c_str(), WS_VISIBLE | WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX, x, y, w, h, 0, 0, 0, 0) == 0) {
 		std::cout << "Window creation failed!" << std::endl;;
 		return;
 	}

@@ -1,9 +1,12 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #pragma once
 
 #include "socket/socket_manager.h"
 
 #include <Windows.h>
 #include <thread>
+#include <vector>
 #include <iostream>
 #include <string>
 
@@ -24,6 +27,7 @@
 #define MESSAGE_TEXTS 21
 #define MESSAGE_FIELD 22
 #define MESSAGE_SEND 23
+#define MESSAGE_FILE_SEND 24
 
 inline extern HWND _hwnd = nullptr;
 inline extern HBRUSH _hStaticBg = nullptr;

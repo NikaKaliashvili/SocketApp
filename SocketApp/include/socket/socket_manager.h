@@ -10,7 +10,8 @@
 void InitializeWSAData();
 
 void ConnectToServer();
-void SendClientMessage();
+void SendClientMessage(int mode);
+void SendServerMessage(int mode);
 void DisconnectFromServer();
 void HostServer();
 void EndServer();
